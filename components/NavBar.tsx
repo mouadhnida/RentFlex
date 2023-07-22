@@ -5,9 +5,9 @@ import Button from "@/components/Button";
 
 export default function NavBar() {
   return (
-    <div className="flex justify-between w-full pt-5">
+    <div className="flex w-full justify-between pt-5">
       <Link href={"/"}>
-        <div className="text-3xl font-bold cursor-pointer">RENT FLEX</div>
+        <div className="cursor-pointer text-3xl font-bold">RENT FLEX</div>
       </Link>
       <div className="absolute left-96 top-[-460px] h-[500px] w-96 rounded-full bg-white blur-3xl"></div>
       <ul className="flex w-[450px] items-center justify-between">
