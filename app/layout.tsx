@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.className} overflow-x-hidden px-44 dark:bg-black`}
+        className={`${outfit.className} mx-40 overflow-x-hidden dark:bg-black dark:text-white max-lg:mx-16 max-sm:mx-4`}
       >
         <ThemeProvider>
           <NavBar />
