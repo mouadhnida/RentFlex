@@ -9,7 +9,7 @@ import Link from "next/link";
 const FeatureSection = () => {
   return (
     <div className="flex flex-col items-center mt-64">
-      <h1 className="text-3xl font-bold border-b border-b-black dark:border-b-white">
+      <h1 className="text-4xl font-bold border-b border-b-black dark:border-b-white">
         Explore Our Top Features
       </h1>
       <div className="grid grid-cols-5 grid-rows-3 mt-32 place-items-center max-md:grid-cols-3 max-md:place-items-start">

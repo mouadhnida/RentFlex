@@ -6,7 +6,7 @@ const Testimonials = () => {
   return (
     <div className="flex flex-col items-center w-full mt-48">
       <h3 className="text-xl font-bold">Terstimonials</h3>
-      <h1 className="text-3xl font-bold border-b w-fit border-b-black dark:border-b-white">
+      <h1 className="text-4xl font-bold border-b w-fit border-b-black dark:border-b-white">
         Read What Others Have To Say
       </h1>
       <div className="flex flex-wrap justify-center mt-28 gap-x-4 gap-y-24">
