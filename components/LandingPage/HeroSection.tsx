@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import Button from "./Button";
-import LandingImage from "./LandingImage";
+import Button from "@/components/ui/Button";
+import LandingImage from "@/components/LandingPage/LandingImage";
 
 const HeroSection = () => {
   return (

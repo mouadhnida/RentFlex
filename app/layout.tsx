@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import ThemeProvider from "@/context/ThemeProvider";
 
 const outfit = Outfit({
-  weight: "400",
   subsets: ["latin"],
 });
 

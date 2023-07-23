@@ -1,14 +1,14 @@
 import Link from "next/link";
 import React from "react";
-import ThemeButton from "@/components/ThemeButton";
-import Button from "@/components/Button";
+import ThemeButton from "@/components/ui/ThemeButton";
+import Button from "@/components/ui/Button";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 
 export default function NavBar() {
   return (
-    <div className="flex w-full justify-between pt-5">
+    <div className="flex justify-between pt-5 bg-white dark:bg-black">
       <Link href={"/"}>
-        <div className="cursor-pointer text-3xl font-bold">RENT FLEX</div>
+        <div className="text-3xl font-bold cursor-pointer">RENT FLEX</div>
       </Link>
       <div className="absolute left-96 top-[-460px] h-[500px] w-96 rounded-full bg-white blur-3xl max-md:hidden"></div>
       <ul className="flex w-[450px] items-center justify-between max-md:hidden">

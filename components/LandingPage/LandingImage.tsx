@@ -1,13 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import landingImage from "@/public/landingImage.svg";
 import landingImage1 from "@/public/landingImage1.svg";
 import { useTheme } from "next-themes";
 
 const LandingImage = () => {
-  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <Image
       src={theme === "dark" ? landingImage : landingImage1}
