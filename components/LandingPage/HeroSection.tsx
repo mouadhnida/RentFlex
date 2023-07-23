@@ -24,7 +24,7 @@ const HeroSection = () => {
         <Link href={"/sign-in"}>
           <Button
             text="List Your Property"
-            style="w-48 max-sm:w-auto h-14 dark:text-white dark:bg-black bg-white text-black border  dark:border-white border-black ml-4 dark:hover:bg-white dark:hover:text-black hover:text-white hover:bg-black"
+            style="w-48 max-sm:w-auto h-14 dark:text-white dark:bg-black bg-white text-black border  dark:border-darkborder border-black ml-4 dark:hover:bg-white dark:hover:text-black hover:text-white hover:bg-black"
           />
         </Link>
       </div>
