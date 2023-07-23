@@ -1,8 +1,7 @@
 import React from "react";
-import landingImage from "@/public/landingImage.svg";
 import Link from "next/link";
 import Button from "./Button";
-import Image from "next/image";
+import LandingImage from "./LandingImage";
 
 const HeroSection = () => {
   return (
@@ -29,11 +28,7 @@ const HeroSection = () => {
           />
         </Link>
       </div>
-      <Image
-        src={landingImage}
-        alt="landing image"
-        className=" right-0 w-2/5 max-xl:absolute max-xl:mt-12 max-lg:hidden"
-      ></Image>
+      <LandingImage />
     </div>
   );
 };
