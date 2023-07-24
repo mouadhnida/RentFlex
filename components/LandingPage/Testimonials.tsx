@@ -5,8 +5,8 @@ import Pp from "@/public/pp.png";
 const Testimonials = () => {
   return (
     <div className="flex flex-col items-center w-full mt-48">
-      <h3 className="text-xl font-bold">Terstimonials</h3>
-      <h1 className="text-4xl font-bold border-b w-fit border-b-black dark:border-b-white">
+      <h3 className="text-xl font-bold max-sm:text-lg">Terstimonials</h3>
+      <h1 className="text-4xl font-bold border-b w-fit border-b-black dark:border-b-white max-sm:text-2xl">
         Read What Others Have To Say
       </h1>
       <div className="flex flex-wrap justify-center mt-28 gap-x-4 gap-y-24">

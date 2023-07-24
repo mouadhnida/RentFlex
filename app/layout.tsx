@@ -1,8 +1,8 @@
-import "./globals.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import NavBar from "@/components/layout/NavBar";
+import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/context/ThemeProvider";
 
 const outfit = Outfit({
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.className} mx-40 overflow-x-hidden dark:bg-black dark:text-white max-lg:mx-16 max-sm:mx-4`}
+        className={`${outfit.className} overflow-x-hidden dark:bg-black dark:text-white`}
       >
         <ThemeProvider>
           <NavBar />

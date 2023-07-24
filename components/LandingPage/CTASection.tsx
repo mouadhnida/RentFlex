@@ -1,5 +1,6 @@
 import React from "react";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const CTASection = () => {
   return (
@@ -11,10 +12,9 @@ const CTASection = () => {
         <h1 className="max-w-[500px] text-center text-4xl font-semibold text-white">
           Enhance Your Property Search, Join Us Today!
         </h1>
-        <Button
-          text="GET STARTED"
-          style="w-56 rounded-full max-sm:w-auto h-14 dark:text-black dark:bg-white bg-black text-white dark:bg-opacity-100 dark:hover:bg-opacity-90 bg-opacity-100 hover:bg-opacity-80"
-        />
+        <Link href={"/sign-in"}>
+          <Button className="px-12 rounded-full">GET STARTED</Button>
+        </Link>
       </div>
     </div>
   );
