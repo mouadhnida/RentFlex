@@ -15,24 +15,12 @@ const HeroSection = () => {
           Whether you're searching for a cozy apartment,or a spacious house.
           Ourplatform connects you with the ideal rental that feels like home.
         </div>
-        {/* <Link href={"/sign-in"}>
-          <Button
-            text="Browse Rental"
-            style="w-48 max-sm:w-auto h-14 dark:text-black dark:bg-white bg-black text-white dark:bg-opacity-100 dark:hover:bg-opacity-90 bg-opacity-100 hover:bg-opacity-80"
-          />
-        </Link>
-        <Link href={"/sign-in"}>
-          <Button
-            text="List Your Property"
-            style="w-48 max-sm:w-auto h-14 dark:text-white dark:bg-black bg-white text-black border  dark:border-darkborder border-black ml-4 dark:hover:bg-white dark:hover:text-black hover:text-white hover:bg-black"
-          />
-        </Link> */}
         <Link href={"/sign-in"}>
           <Button className="w-48 max-sm:w-auto">Browse Rental</Button>
         </Link>
         <Link href={"/sign-in"}>
           <Button className="w-48 ml-4 max-sm:w-auto" variant="outline">
-            Browse Rental
+            List Your Property
           </Button>
         </Link>
       </div>
