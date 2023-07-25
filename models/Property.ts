@@ -12,7 +12,7 @@ export class Property {
   price!: number;
 
   @prop({ required: true })
-  propertyImage!: string[];
+  propertyImages!: string[];
 
   @prop({ required: true })
   address!: string;
@@ -26,7 +26,7 @@ export class Property {
   @prop({ default: [] })
   amenities: string[];
 
-  @prop({ type: () => [{ startDate: Date, endDate: Date }], default: [] })
+  @prop({ default: [] })
   bookedDates?: { startDate: Date; endDate: Date }[];
 
   @prop({
