@@ -5,24 +5,7 @@ import { RentedProperty } from "@/models/RentedProperty";
 
 export class User {
   @prop({ required: true, unique: true })
-  name!: string;
-
-  @prop({ required: true, unique: true })
-  email!: string;
-
-  @prop({ required: true })
-  password!: string;
-
-  @prop()
-  profileImage?: string;
-
-  @prop()
-  contactInformation?: {
-    phone?: string;
-    address?: string;
-    email?: string;
-    socials?: string[];
-  };
+  userId!: string;
 
   @prop({ ref: () => Property })
   favoriteProperties?: Ref<Property>[];

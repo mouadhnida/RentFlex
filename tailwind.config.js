@@ -32,6 +32,7 @@ module.exports = {
       },
       colors: {
         border: "#27272A",
+        gray: "rgb(160,160,160)",
       },
     },
   },

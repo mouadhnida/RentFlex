@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 
 const LandingImage = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -23,6 +23,7 @@ const LandingImage = () => {
       src={theme === "dark" ? landingImage : landingImage1}
       alt="landing image"
       className="right-0 w-2/5 max-w-5xl max-xl:absolute max-xl:mt-12 max-lg:hidden"
+      loading="lazy"
     ></Image>
   );
 };

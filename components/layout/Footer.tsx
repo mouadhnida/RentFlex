@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { NewsLetterForm } from "../forms/newsLetter";
+import { NewsLetterForm } from "../forms/NewsLetter";
 
 export default function Footer() {
   return (

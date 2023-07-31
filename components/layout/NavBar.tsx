@@ -1,10 +1,12 @@
 import Link from "next/link";
-import React from "react";
+import React, { use } from "react";
 import ThemeButton from "@/components/ui/ThemeButton";
 import { Button } from "@/components/ui/button";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import { currentUser, UserButton } from "@clerk/nextjs";
 
-export default function NavBar() {
+export default async function NavBar() {
+  const user = await currentUser();
   return (
     <div className="flex justify-between h-16 pt-5 mx-40 bg-white dark:bg-black max-lg:mx-16 max-sm:mx-4">
       <Link href={"/"}>
@@ -26,7 +28,11 @@ export default function NavBar() {
         </Link>
         <Link href={"/sign-in"}>
           <li className="cursor-pointer">
-            <Button className="h-10">Sign In</Button>
+            {user ? (
+              <UserButton afterSignOutUrl="/" />
+            ) : (
+              <Button className="h-10">Sign In</Button>
+            )}
           </li>
         </Link>
         <li className="">
