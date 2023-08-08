@@ -13,7 +13,7 @@ type Event = {
   type: EventType;
 };
 
-type EventType = "user.created" | "user.updated" | "*";
+type EventType = "user.created" | "user.updated" | "user.deleted";
 
 export async function POST(req: Request) {
   const payload = await req.json();
@@ -38,16 +38,16 @@ export async function POST(req: Request) {
   }
 
   const eventType: EventType = evt.type;
+  const { id, image_url, first_name, last_name } = evt.data;
+
+  dbConnect();
   if (eventType === "user.created" || eventType === "user.updated") {
-    const { id, image_url, username } = evt.data;
-
-    dbConnect();
-
-    const result = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
       { userId: id },
-      { userId: id, image: image_url, username },
+      { userId: id, image: image_url, username: first_name + " " + last_name },
       { upsert: true }
     );
-    console.log(result);
+  } else if (eventType === "user.deleted") {
+    await User.deleteOne({ userId: id });
   }
 }

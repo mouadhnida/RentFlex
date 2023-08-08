@@ -32,7 +32,6 @@ export function SignInForm() {
   const form = useForm<Input>({
     resolver: zodResolver(authSchema),
     defaultValues: {
-      password: "",
       email: "",
     },
   });
@@ -45,7 +44,6 @@ export function SignInForm() {
     try {
       const result = await signIn.create({
         identifier: values.email,
-        password: values.password,
       });
 
       if (result.status === "complete") {
@@ -79,25 +77,8 @@ export function SignInForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="**********"
-                  {...field}
-                  className=" placeholder:pt-1"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button className="flex h-10 w-full items-center">
-          {loading && <LucideLoader2 className="mr-2 h-4 w-4 animate-spin" />}{" "}
+        <Button className="flex items-center w-full h-10">
+          {loading && <LucideLoader2 className="w-4 h-4 mr-2 animate-spin" />}{" "}
           Sign in
         </Button>
       </form>

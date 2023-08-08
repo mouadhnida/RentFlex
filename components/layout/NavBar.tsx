@@ -1,16 +1,30 @@
 import Link from "next/link";
-import React, { use } from "react";
 import ThemeButton from "@/components/ui/ThemeButton";
 import { Button } from "@/components/ui/button";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
-import { currentUser, UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { User, LayoutDashboard, LogOut } from "lucide-react";
 
 export default async function NavBar() {
   const user = await currentUser();
+
+  const email =
+    user?.emailAddresses?.find((e) => e.id === user.primaryEmailAddressId)
+      ?.emailAddress ?? "";
+
   return (
-    <div className="mx-40 flex h-16 justify-between bg-white pt-5 dark:bg-black max-lg:mx-16 max-sm:mx-4">
+    <div className="flex justify-between h-16 pt-5 mx-40 bg-white dark:bg-black max-lg:mx-16 max-sm:mx-4">
       <Link href={"/"}>
-        <div className="cursor-pointer text-3xl font-bold">RENT FLEX</div>
+        <div className="text-3xl font-bold cursor-pointer">RENT FLEX</div>
       </Link>
 
       <ul className="flex w-[450px] items-center justify-between max-md:hidden">
@@ -26,15 +40,48 @@ export default async function NavBar() {
         <Link href={"/about-us"}>
           <li className="cursor-pointer">About us</li>
         </Link>
-        <Link href={"/sign-in"}>
-          <li className="cursor-pointer">
-            {user ? (
-              <UserButton afterSignOutUrl="/" />
-            ) : (
-              <Button className="h-10">Sign In</Button>
-            )}
-          </li>
-        </Link>
+        <li className="cursor-pointer">
+          {user ? (
+            <div>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Avatar>
+                    <AvatarImage src={user.imageUrl} alt="user avatar" />
+                    <AvatarFallback>
+                      {user.firstName
+                        ? user.firstName?.slice(0, 1) +
+                          user.lastName?.slice(0, 1)
+                        : null}
+                    </AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className=" w-52">
+                  <DropdownMenuLabel>
+                    <div>
+                      {user.firstName + " " + user.lastName}
+                      <p className="text-xs font-normal dark:text-gray">
+                        {email}
+                      </p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <User className="w-4 h-4 mr-2 " /> Account
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <LayoutDashboard className="w-4 h-4 mr-2 " /> Dashboard
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <LogOut className="w-4 h-4 mr-2 " /> Log out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          ) : (
+            <Button className="h-10">Sign In</Button>
+          )}
+        </li>
         <li className="">
           <ThemeButton />
         </li>

@@ -32,7 +32,6 @@ export function SignUpForm() {
     resolver: zodResolver(authSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
@@ -43,7 +42,7 @@ export function SignUpForm() {
     try {
       await signUp.create({
         emailAddress: values.email,
-        password: values.password,
+        //password: values.password,
       });
 
       await signUp.prepareEmailAddressVerification({
@@ -78,24 +77,7 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="**********"
-                  {...field}
-                  className=" placeholder:pt-1"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button disabled={isPending} className="h-10 w-full">
+        <Button disabled={isPending} className="w-full h-10">
           Continue
         </Button>
       </form>

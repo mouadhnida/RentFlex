@@ -48,12 +48,6 @@ export default async function SignInPage() {
               Sign up
             </Link>
           </div>
-          <Link
-            href={"/signin/resetpassword"}
-            className="text-sm underline-offset-4 hover:underline"
-          >
-            Reset password
-          </Link>
         </CardFooter>
       </Card>
     </div>

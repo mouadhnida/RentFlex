@@ -11,9 +11,18 @@ const RentedPropertySchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  startDate: { type: Date, required: true },
-  endDate: { type: Date, required: true },
-  totalPrice: { type: Number, required: true },
+  startDate: {
+    type: Date,
+    required: true,
+  },
+  endDate: {
+    type: Date,
+    required: true,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
 });
 
 const RentedProperty =
