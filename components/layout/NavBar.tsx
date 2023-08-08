@@ -8,9 +8,9 @@ import { currentUser, UserButton } from "@clerk/nextjs";
 export default async function NavBar() {
   const user = await currentUser();
   return (
-    <div className="flex justify-between h-16 pt-5 mx-40 bg-white dark:bg-black max-lg:mx-16 max-sm:mx-4">
+    <div className="mx-40 flex h-16 justify-between bg-white pt-5 dark:bg-black max-lg:mx-16 max-sm:mx-4">
       <Link href={"/"}>
-        <div className="text-3xl font-bold cursor-pointer">RENT FLEX</div>
+        <div className="cursor-pointer text-3xl font-bold">RENT FLEX</div>
       </Link>
 
       <ul className="flex w-[450px] items-center justify-between max-md:hidden">

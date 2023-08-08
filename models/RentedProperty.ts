@@ -1,21 +1,23 @@
-import { prop } from "@typegoose/typegoose";
-import type { Ref } from "@typegoose/typegoose";
-import { Property } from "@/models/Property";
-import { User } from "@/models/User";
+import mongoose from "mongoose";
 
-export class RentedProperty {
-  @prop({ required: true, ref: () => Property })
-  property: Ref<Property>;
+const RentedPropertySchema = new mongoose.Schema({
+  property: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Property",
+    required: true,
+  },
+  tenant: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  startDate: { type: Date, required: true },
+  endDate: { type: Date, required: true },
+  totalPrice: { type: Number, required: true },
+});
 
-  @prop({ required: true, ref: () => User })
-  tenant: Ref<User>;
+const RentedProperty =
+  mongoose.models.RentedProperty ||
+  mongoose.model("RentedProperty", RentedPropertySchema);
 
-  @prop({ required: true })
-  startDate: Date;
-
-  @prop({ required: true })
-  endDate: Date;
-
-  @prop({ required: true })
-  totalPrice: number;
-}
+export default RentedProperty;

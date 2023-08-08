@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const CTASection = () => {
   return (
-    <div className="flex justify-center w-full mt-28">
+    <div className="mt-28 flex w-full justify-center">
       <div className="flex h-80 w-[990px] flex-col items-center gap-6 rounded-lg bg-gradient-to-b from-[rgb(80,80,80)] to-[rgb(235,235,235)] pt-14 dark:from-[rgb(212,212,212)] dark:to-[rgb(20,20,20)]">
         <p className="text-lg font-semibold text-white dark:text-black">
           ARE YOU READY ?
@@ -13,7 +13,7 @@ const CTASection = () => {
           Enhance Your Property Search, Join Us Today!
         </h1>
         <Link href={"/sign-in"}>
-          <Button className="px-12 rounded-full">GET STARTED</Button>
+          <Button className="rounded-full px-12">GET STARTED</Button>
         </Link>
       </div>
     </div>

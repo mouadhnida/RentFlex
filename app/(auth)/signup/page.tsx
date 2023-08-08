@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { SignUpForm } from "@/components/forms/SignUpForm";
-import OauthSignIn from "@/components/OauthSignIn";
 import {
   Card,
   CardContent,
@@ -13,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import OauthSignUp from "@/components/auth/OauthSignUp";
 
 export const metadata: Metadata = {
   title: "Sign Up",
@@ -34,7 +34,7 @@ export default async function SignUpPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <OauthSignIn />
+          <OauthSignUp />
           <Separator />
           <SignUpForm />
         </CardContent>

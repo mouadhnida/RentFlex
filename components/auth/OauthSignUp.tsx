@@ -1,16 +1,16 @@
 "use client";
 
-import { useSignIn } from "@clerk/nextjs";
+import { useSignUp } from "@clerk/nextjs";
 import { type OAuthStrategy } from "@clerk/types";
 import React from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { BiLogoFacebook } from "react-icons/bi";
 import { AiOutlineGoogle } from "react-icons/ai";
 
-const OauthSignIn = () => {
-  const { signIn } = useSignIn();
-  const signInWith = (strategy: OAuthStrategy) => {
-    return signIn?.authenticateWithRedirect({
+const OauthSignUp = () => {
+  const { signUp } = useSignUp();
+  const signUpWith = (strategy: OAuthStrategy) => {
+    return signUp?.authenticateWithRedirect({
       strategy,
       redirectUrl: "/ssocallback",
       redirectUrlComplete: "/",
@@ -19,16 +19,16 @@ const OauthSignIn = () => {
   return (
     <div className="flex gap-2 max-sm:flex-wrap">
       <Button
-        className="w-full h-10 font-normal"
+        className="h-10 w-full font-normal"
         variant="outline"
-        onClick={() => signInWith("oauth_google")}
+        onClick={() => signUpWith("oauth_google")}
       >
         <AiOutlineGoogle className="mr-1 text-xl " /> Google
       </Button>
       <Button
-        className="w-full h-10 font-normal"
+        className="h-10 w-full font-normal"
         variant="outline"
-        onClick={() => signInWith("oauth_facebook")}
+        onClick={() => signUpWith("oauth_facebook")}
       >
         <BiLogoFacebook className="mr-1 text-xl" /> Facebook
       </Button>
@@ -36,4 +36,4 @@ const OauthSignIn = () => {
   );
 };
 
-export default OauthSignIn;
+export default OauthSignUp;

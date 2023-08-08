@@ -1,43 +1,28 @@
-import { prop, Ref } from "@typegoose/typegoose";
-import { FeedBack } from "@/models/FeedBack";
+import mongoose from "mongoose";
 
-export class Property {
-  @prop({ required: true })
-  title!: string;
-
-  @prop({ required: true })
-  description!: string;
-
-  @prop({ required: true })
-  price!: number;
-
-  @prop({ required: true })
-  propertyImages!: string[];
-
-  @prop({ required: true })
-  address!: string;
-
-  @prop({ required: true })
-  location!: { x: number; y: number };
-
-  @prop({ required: true, enum: ["apartment", "house", "villa"] })
-  type!: "apartment" | "house" | "villa";
-
-  @prop({ default: [] })
-  amenities: string[];
-
-  @prop({ default: [] })
-  bookedDates?: { startDate: Date; endDate: Date }[];
-
-  @prop({
-    type: () => [Number],
+const PropertySchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  price: { type: Number, required: true },
+  propertyImages: { type: [String], required: true },
+  address: { type: String, required: true },
+  location: { type: { x: Number, y: Number }, required: true },
+  type: {
+    type: String,
+    enum: ["apartment", "house", "villa"],
+    required: true,
+  },
+  amenities: { type: [String], default: [] },
+  bookedDates: { type: [{ startDate: Date, endDate: Date }], default: [] },
+  availableMonths: {
+    type: [Number],
     default: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-  })
-  availableMonths?: number[];
+  },
+  feedbacks: [{ type: mongoose.Schema.Types.ObjectId, ref: "FeedBack" }],
+  totalEarnings: { type: Number, default: 0 },
+});
 
-  @prop({ ref: () => FeedBack })
-  feedbacks?: Ref<FeedBack>[];
+const Property =
+  mongoose.models.Property || mongoose.model("Property", PropertySchema);
 
-  @prop({ default: 0 })
-  totalEarnings?: number;
-}
+export default Property;

@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <div className="relative grid min-h-screen grid-cols-2 overflow-x-hidden max-lg:grid-cols-3 max-sm:grid-cols-1 sm:overflow-y-hidden">
-      <div className="relative inset-0 z-50 flex justify-center w-full m-auto transform max-lg:col-span-2 max-sm:absolute max-sm:left-1/2 max-sm:top-1/2 max-sm:col-span-1 max-sm:-translate-x-1/2 max-sm:-translate-y-3/4">
+      <div className="relative inset-0 z-50 m-auto flex w-full transform justify-center max-lg:col-span-2 max-sm:absolute max-sm:left-1/2 max-sm:top-1/2 max-sm:col-span-1 max-sm:-translate-x-1/2 max-sm:-translate-y-3/4">
         <div className="container max-w-[446px] px-4">{children}</div>
       </div>
 

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import OauthSignIn from "@/components/OauthSignIn";
+import OauthSignIn from "@/components/auth/OauthSignIn";
 import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {

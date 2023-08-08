@@ -4,21 +4,21 @@ import Pp from "@/public/pp.png";
 
 const Testimonials = () => {
   return (
-    <div className="flex flex-col items-center w-full mt-48">
+    <div className="mt-48 flex w-full flex-col items-center">
       <h3 className="text-xl font-bold max-sm:text-lg">Terstimonials</h3>
-      <h1 className="text-4xl font-bold border-b w-fit border-b-black dark:border-b-white max-sm:text-2xl">
+      <h1 className="w-fit border-b border-b-black text-4xl font-bold dark:border-b-white max-sm:text-2xl">
         Read What Others Have To Say
       </h1>
-      <div className="flex flex-wrap justify-center mt-28 gap-x-4 gap-y-24">
+      <div className="mt-28 flex flex-wrap justify-center gap-x-4 gap-y-24">
         <div className="relative">
-          <div className="absolute left-0 flex justify-center w-full -top-12">
+          <div className="absolute -top-12 left-0 flex w-full justify-center">
             <Image
               src={Pp}
               alt="profile picture"
-              className="w-24 h-24 rounded-full"
+              className="h-24 w-24 rounded-full"
             ></Image>
           </div>
-          <div className="flex min-h-[300px] w-80 flex-col items-center justify-center gap-4 rounded border border-darkborder">
+          <div className="border-darkborder flex min-h-[300px] w-80 flex-col items-center justify-center gap-4 rounded border">
             <p className="text-lg font-semibold ">Random guy</p>
             <p className="text-center">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
@@ -28,14 +28,14 @@ const Testimonials = () => {
           </div>
         </div>
         <div className="relative">
-          <div className="absolute left-0 flex justify-center w-full -top-12">
+          <div className="absolute -top-12 left-0 flex w-full justify-center">
             <Image
               src={Pp}
               alt="profile picture"
-              className="w-24 h-24 rounded-full"
+              className="h-24 w-24 rounded-full"
             ></Image>
           </div>
-          <div className="flex min-h-[300px] w-80 flex-col items-center justify-center gap-4 rounded border border-darkborder">
+          <div className="border-darkborder flex min-h-[300px] w-80 flex-col items-center justify-center gap-4 rounded border">
             <p className="text-lg font-semibold ">Random guy</p>
             <p className="text-center">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
@@ -45,14 +45,14 @@ const Testimonials = () => {
           </div>
         </div>
         <div className="relative">
-          <div className="absolute left-0 flex justify-center w-full -top-12">
+          <div className="absolute -top-12 left-0 flex w-full justify-center">
             <Image
               src={Pp}
               alt="profile picture"
-              className="w-24 h-24 rounded-full"
+              className="h-24 w-24 rounded-full"
             ></Image>
           </div>
-          <div className="flex min-h-[300px] w-80 flex-col items-center justify-center gap-4 rounded border border-darkborder">
+          <div className="border-darkborder flex min-h-[300px] w-80 flex-col items-center justify-center gap-4 rounded border">
             <p className="text-lg font-semibold ">Random guy</p>
             <p className="text-center">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non

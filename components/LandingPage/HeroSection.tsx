@@ -18,7 +18,7 @@ const HeroSection = () => {
           <Button className="w-48 max-sm:w-auto">Browse Rental</Button>
         </Link>
         <Link href={"/sign-in"}>
-          <Button className="w-48 ml-4 max-sm:w-auto" variant="outline">
+          <Button className="ml-4 w-48 max-sm:w-auto" variant="outline">
             List Your Property
           </Button>
         </Link>

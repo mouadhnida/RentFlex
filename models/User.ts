@@ -1,21 +1,43 @@
-import { prop, Ref } from "@typegoose/typegoose";
-import { Property } from "@/models/Property";
-import { FeedBack } from "@/models/FeedBack";
-import { RentedProperty } from "@/models/RentedProperty";
+import mongoose from "mongoose";
 
-export class User {
-  @prop({ required: true, unique: true })
-  userId!: string;
+const UserSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  username: {
+    type: String,
+    unique: true,
+  },
+  image: String,
+  bio: String,
+  email: String,
+  phone: String,
+  favoriteProperties: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Property",
+    },
+  ],
+  listedProperties: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Property",
+    },
+  ],
+  rentedProperties: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "RentedProperty",
+    },
+  ],
+  feedbacks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "FeedBack",
+    },
+  ],
+});
 
-  @prop({ ref: () => Property })
-  favoriteProperties?: Ref<Property>[];
-
-  @prop({ ref: () => Property })
-  listedProperties?: Ref<Property>[];
-
-  @prop({ ref: () => Property })
-  rentedProperties?: Ref<RentedProperty>[];
-
-  @prop({ ref: () => FeedBack })
-  feedbacks?: Ref<FeedBack>[];
-}
+export const User = mongoose.models.User || mongoose.model("User", UserSchema);

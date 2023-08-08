@@ -19,7 +19,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
 import { LucideLoader2 } from "lucide-react";
 
 type Input = z.infer<typeof authSchema>;
@@ -48,9 +47,9 @@ export function SignInForm() {
         identifier: values.email,
         password: values.password,
       });
+
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        console.log(result);
         router.push(`${window.location.origin}/`);
       } else {
         console.log(result);
@@ -87,14 +86,18 @@ export function SignInForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="**********" {...field} className="pt-3" />
+                <Input
+                  placeholder="**********"
+                  {...field}
+                  className=" placeholder:pt-1"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className="flex items-center w-full h-10">
-          {loading && <LucideLoader2 className="w-4 h-4 mr-2 animate-spin" />}{" "}
+        <Button className="flex h-10 w-full items-center">
+          {loading && <LucideLoader2 className="mr-2 h-4 w-4 animate-spin" />}{" "}
           Sign in
         </Button>
       </form>

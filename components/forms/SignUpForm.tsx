@@ -95,7 +95,7 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button disabled={isPending} className="w-full h-10">
+        <Button disabled={isPending} className="h-10 w-full">
           Continue
         </Button>
       </form>
