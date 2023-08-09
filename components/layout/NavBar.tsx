@@ -12,7 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, LayoutDashboard, LogOut } from "lucide-react";
+import { User, LayoutDashboard, LogOut as Logout } from "lucide-react";
+import LogOut from "@/components/auth/LogOut";
 
 export default async function NavBar() {
   const user = await currentUser();
@@ -22,7 +23,7 @@ export default async function NavBar() {
       ?.emailAddress ?? "";
 
   return (
-    <div className="flex justify-between h-16 pt-5 mx-40 bg-white dark:bg-black max-lg:mx-16 max-sm:mx-4">
+    <div className="flex items-center justify-between h-16 pt-5 mx-40 bg-white dark:bg-black max-lg:mx-16 max-sm:mx-4">
       <Link href={"/"}>
         <div className="text-3xl font-bold cursor-pointer">RENT FLEX</div>
       </Link>
@@ -65,21 +66,27 @@ export default async function NavBar() {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <User className="w-4 h-4 mr-2 " /> Account
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <LayoutDashboard className="w-4 h-4 mr-2 " /> Dashboard
-                  </DropdownMenuItem>
+                  <Link href={"/dashboard/account"}>
+                    <DropdownMenuItem>
+                      <User className="w-4 h-4 mr-2 " /> Account
+                    </DropdownMenuItem>
+                  </Link>
+                  <Link href={"/dashboard"}>
+                    <DropdownMenuItem>
+                      <LayoutDashboard className="w-4 h-4 mr-2 " /> Dashboard
+                    </DropdownMenuItem>
+                  </Link>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
-                    <LogOut className="w-4 h-4 mr-2 " /> Log out
+                    <Logout className="w-4 h-4 mr-2 " /> <LogOut />
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
           ) : (
-            <Button className="h-10">Sign In</Button>
+            <Link href={"/signin"}>
+              <Button className="h-10">Sign In</Button>
+            </Link>
           )}
         </li>
         <li className="">
