@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-40 my-14 grid grid-cols-4 max-lg:mx-16 max-md:grid-cols-2 max-md:gap-8 max-sm:mx-4 max-[500px]:grid-cols-1">
         <div className="text-xl font-bold">RENT FLEX</div>
         <div>
-          <h1 className="cursor-pointer font-semibold ">RENT FLEX</h1>
+          <h1 className="font-semibold cursor-pointer ">RENT FLEX</h1>
           <Link href={"/"}>
             <p className="cursor-pointer">Home</p>
           </Link>
@@ -20,7 +20,7 @@ export default function Footer() {
           </Link>
         </div>
         <div>
-          <h1 className="cursor-pointer font-semibold">CONTACT</h1>
+          <h1 className="font-semibold cursor-pointer">CONTACT</h1>
           <Link href={"/"}>
             <p className="cursor-pointer">Email</p>
           </Link>

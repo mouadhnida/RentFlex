@@ -27,7 +27,8 @@ const HeroSection = () => {
       <Image
         src={landingImage}
         alt="landing Image"
-        className="col-start-1 col-end-3 max-md:hidden"
+        className="right-0 w-2/5 max-w-5xl max-xl:absolute max-xl:mt-12 max-lg:hidden"
+        loading="lazy"
       />
     </div>
   );
