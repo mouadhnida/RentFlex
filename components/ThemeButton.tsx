@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
-import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
+import { Sun, Moon } from "lucide-react";
 
 const ThemeButton = () => {
   const [mounted, setMounted] = useState(false);
@@ -24,9 +24,9 @@ const ThemeButton = () => {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (
-        <HiOutlineSun className="text-2xl" />
+        <Sun className="text-2xl" />
       ) : (
-        <HiOutlineMoon className="text-2xl" />
+        <Moon className="text-2xl" />
       )}
     </button>
   );

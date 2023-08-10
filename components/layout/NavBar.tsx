@@ -8,13 +8,13 @@ import MobileNav from "./MobileNav";
 import { User } from "@clerk/nextjs/dist/types/server";
 
 interface NavBarProps {
-  user?: User | null; // Replace 'any' with the actual type of your user object
+  user?: User | null;
   email?: string;
 }
 
 export default function NavBar({ user, email }: NavBarProps) {
   return (
-    <div className="flex items-center justify-between h-16 pt-5 mx-40 bg-white dark:bg-black max-lg:mx-16 max-sm:mx-4">
+    <div className="flex items-center justify-between h-16 pt-2 mx-40 bg-white dark:bg-black max-lg:mx-16 max-sm:mx-4">
       <Link href={"/"}>
         <div className="text-3xl font-bold cursor-pointer max-md:hidden">
           RENT FLEX
@@ -36,7 +36,7 @@ export default function NavBar({ user, email }: NavBarProps) {
         </Link>
         <li className="cursor-pointer">
           {user ? (
-            <div className="mt-2">
+            <div className="">
               <UserAvatar user={user} email={email} />
             </div>
           ) : (
@@ -52,7 +52,7 @@ export default function NavBar({ user, email }: NavBarProps) {
       <div className="items-center justify-between hidden w-full text-2xl max-md:flex">
         <MobileNav />
         <div className="text-3xl font-bold cursor-pointer">RENT FLEX</div>
-        <div className="flex gap-4 mt-2 max-sm:gap-2">
+        <div className="flex gap-4 max-sm:gap-2">
           {user ? (
             <UserAvatar user={user} email={email} />
           ) : (

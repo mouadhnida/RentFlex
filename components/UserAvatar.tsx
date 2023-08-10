@@ -50,7 +50,7 @@ export default function UserAvatar(props: {
               <UserIcon className="w-4 h-4 mr-2 " /> Account
             </DropdownMenuItem>
           </Link>
-          <Link href={"/dashboard"}>
+          <Link href={"/dashboard/reservation"}>
             <DropdownMenuItem>
               <LayoutDashboard className="w-4 h-4 mr-2 " /> Dashboard
             </DropdownMenuItem>
