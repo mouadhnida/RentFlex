@@ -45,7 +45,7 @@ export default function UserAvatar(props: {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <Link href={"/dashboard/account"}>
+          <Link href={"/dashboard/profile"}>
             <DropdownMenuItem>
               <UserIcon className="w-4 h-4 mr-2 " /> Account
             </DropdownMenuItem>
