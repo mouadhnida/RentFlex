@@ -17,11 +17,11 @@ export default async function layout({
   return (
     <div>
       <Separator className="m-0" />
-      <div className="flex min-h-screen">
-        <div>
+      <div className="flex">
+        <div className="max-md:hidden">
           <SideNav />
         </div>
-        <div>{children}</div>
+        <div className="w-full">{children}</div>
       </div>
     </div>
   );

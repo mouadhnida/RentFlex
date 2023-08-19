@@ -5,6 +5,7 @@ export type User = {
   favoriteProperties: Property[];
   feedbacks?: FeedBack[];
   image: string;
+  phone?: string;
   listedProperties?: Property[];
   rentedProperties?: RentedProperty[];
   username?: string;

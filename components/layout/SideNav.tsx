@@ -35,9 +35,9 @@ export default function SideNav() {
     <div className="relative h-full w-96">
       <Separator
         orientation="vertical"
-        className="absolute right-0 h-full -mt-10"
+        className="absolute right-0 h-full -mt-10 max-lg:right-28"
       />
-      <div className="flex flex-col gap-2 mt-10 ml-40 mr-6">
+      <div className="flex flex-col gap-2 mt-10 ml-40 mr-6 w-fit max-lg:ml-16">
         {data.map((item, index) => {
           return (
             <Link

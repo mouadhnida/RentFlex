@@ -26,7 +26,6 @@ export function SignUpForm() {
   const router = useRouter();
   const { toast } = useToast();
   const { isLoaded, signUp } = useSignUp();
-  const [isPending, startTransition] = useTransition();
 
   const form = useForm<Input>({
     resolver: zodResolver(authSchema),
@@ -77,9 +76,7 @@ export function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button disabled={isPending} className="w-full h-10">
-          Continue
-        </Button>
+        <Button className="w-full h-10">Continue</Button>
       </form>
     </Form>
   );

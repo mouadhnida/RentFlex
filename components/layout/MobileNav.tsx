@@ -8,6 +8,7 @@ import {
 import { Separator } from "../ui/separator";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import ThemeButton from "../ThemeButton";
 
 export default function MobileNav() {
   return (
@@ -38,6 +39,12 @@ export default function MobileNav() {
             <li className="cursor-pointer">About us</li>
           </Link>
           <Separator />
+          <div className="sm:hidden">
+            <li>
+              <ThemeButton />
+            </li>
+            <Separator className="mt-1" />
+          </div>
         </ul>
       </SheetContent>
     </Sheet>

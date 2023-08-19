@@ -1,6 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
 import { User } from "@/models/User";
-import { currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -9,11 +8,16 @@ export async function POST(req: Request) {
   try {
     dbConnect();
     if (id) {
-      const result = await User.findOne({
+      const user = await User.findOne({
         userId: id,
       });
-      if (result) {
-        return NextResponse.json({ user: result });
+      if (user) {
+        const userData = {
+          username: user.username,
+          phone: user.phone,
+          bio: user.bio,
+        };
+        return NextResponse.json({ user: userData });
       }
       console.log(`No User with id: ${id}`);
     }
