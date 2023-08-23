@@ -20,29 +20,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
 
 type Input = z.infer<typeof UserProfileSchema>;
 
 export default function UserProfileForm(props: { user: User }) {
   const { isLoaded, isSignedIn, user } = useUser();
-  // const [image, setImage] = useState<string>(user?.imageUrl ?? "");
-
-  const handleImageChange = async (e: any) => {
-    const selectedImage = e.target.files[0];
-    try {
-      if (selectedImage) {
-        const reader = new FileReader();
-        reader.onloadend = async () => {
-          const base64data = reader.result as string;
-          user?.setProfileImage({ file: base64data });
-        };
-        reader.readAsDataURL(selectedImage);
-      }
-    } catch (e: any) {
-      console.error(e);
-    }
-  };
 
   if (!isLoaded || !isSignedIn) {
     return null;
@@ -51,16 +33,40 @@ export default function UserProfileForm(props: { user: User }) {
   const form = useForm<Input>({
     resolver: zodResolver(UserProfileSchema),
     defaultValues: {
-      firstName: props.user.username?.split(" ")[0],
-      lastName: props.user.username?.split(" ")[1],
+      // firstName: "" || props.user.username?.split(" ")[0],
+      // lastName: "" || props.user.username?.split(" ")[1],
+      // email: user.primaryEmailAddress?.emailAddress,
+      // bio: props.user.bio,
+      firstName: user.firstName || "",
+      lastName: user.lastName || "",
       email: user.primaryEmailAddress?.emailAddress,
-      phone: props.user.phone,
-      bio: props.user.bio,
+      bio: user.unsafeMetadata?.bio || "",
     },
   });
 
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedImage = e.target.files?.[0];
+
+    if (selectedImage) {
+      try {
+        await user.setProfileImage({ file: selectedImage });
+      } catch (error: any) {
+        console.error("Error updating image:", error.message);
+      }
+    }
+  };
+
   async function onSubmit(values: Input) {
-    console.log(values);
+    const { firstName, lastName } = values;
+    try {
+      const result = await user?.update({
+        unsafeMetadata: { bio: values.bio },
+        firstName,
+        lastName,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -69,11 +75,11 @@ export default function UserProfileForm(props: { user: User }) {
         <CardHeader>
           <CardTitle className="flex justify-center w-full">
             <label
-              className="group relative -top-20 h-[100px] w-[100px] object-cover max-md:top-0"
+              className="group relative -top-20 h-[100px] w-[100px] overflow-hidden object-cover max-md:top-0"
               htmlFor="userProfile"
             >
               <Image
-                className="transition duration-200 rounded-full group-hover:opacity-40 "
+                className="min-h-[100px] max-w-[100px] rounded-full transition duration-200 group-hover:opacity-40 "
                 src={user.imageUrl}
                 width={100}
                 height={100}
@@ -83,13 +89,13 @@ export default function UserProfileForm(props: { user: User }) {
                 Change Image
               </span>
             </label>
-            <input
+            <Input
               type="file"
               id="userProfile"
               accept="image/**"
               className="hidden"
               onChange={handleImageChange}
-            ></input>
+            />
           </CardTitle>
         </CardHeader>
         <CardContent className="mt-0">
@@ -102,7 +108,7 @@ export default function UserProfileForm(props: { user: User }) {
                   <FormItem>
                     <FormLabel>FirstName</FormLabel>
                     <FormControl>
-                      <Input placeholder="First Name" {...field} className="" />
+                      <Input placeholder="First Name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -123,25 +129,17 @@ export default function UserProfileForm(props: { user: User }) {
               />
               <FormField
                 control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Phone</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Phone" {...field} className="" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="Email" {...field} className="" />
+                      <Input
+                        placeholder="Email"
+                        disabled
+                        {...field}
+                        className="border border-slate-300 bg-slate-200 dark:border-border dark:bg-border"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

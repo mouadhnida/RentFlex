@@ -7,7 +7,6 @@ export const UserProfileSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address",
   }),
-  phone: z.string(),
   bio: z
     .string()
     .refine(

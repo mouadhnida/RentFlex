@@ -38,13 +38,26 @@ export async function POST(req: Request) {
   }
 
   const eventType: EventType = evt.type;
-  const { id, image_url, first_name, last_name } = evt.data;
+  const {
+    id,
+    image_url,
+    first_name,
+    last_name,
+    unsafe_metadata,
+    ...attributes
+  } = evt.data;
 
   dbConnect();
   if (eventType === "user.created" || eventType === "user.updated") {
-    await User.findOneAndUpdate(
+    const bio = (unsafe_metadata as any).bio;
+    const result = await User.findOneAndUpdate(
       { userId: id },
-      { userId: id, image: image_url, username: first_name + " " + last_name },
+      {
+        userId: id,
+        image: image_url,
+        username: first_name + " " + last_name,
+        bio: bio,
+      },
       { upsert: true }
     );
   } else if (eventType === "user.deleted") {

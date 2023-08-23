@@ -8,12 +8,10 @@ const UserSchema = new mongoose.Schema({
   },
   username: {
     type: String,
-    unique: true,
   },
   image: String,
   bio: String,
   email: String,
-  phone: String,
   favoriteProperties: [
     {
       type: mongoose.Schema.Types.ObjectId,
