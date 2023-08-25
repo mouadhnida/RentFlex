@@ -38,7 +38,9 @@ export default function UserAvatar(props: {
         <DropdownMenuContent className=" w-52">
           <DropdownMenuLabel>
             <div>
-              {props.user.firstName + " " + props.user.lastName}
+              {props.user.firstName && props.user.lastName
+                ? props.user.firstName + " " + props.user.lastName
+                : ""}
               <p className="text-xs font-normal dark:text-gray">
                 {props.email}
               </p>

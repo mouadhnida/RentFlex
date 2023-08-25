@@ -1,8 +1,9 @@
 "use client";
 
+import { useToast } from "@/components/ui/use-toast";
 import { useUser } from "@clerk/nextjs";
 import { UserProfileSchema } from "@/lib/validations/userProfile";
-import { User } from "@/types";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -20,30 +21,34 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useEffect } from "react";
 
 type Input = z.infer<typeof UserProfileSchema>;
 
-export default function UserProfileForm(props: { user: User }) {
+export default function UserProfileForm() {
+  const { toast } = useToast();
+  const router = useRouter();
   const { isLoaded, isSignedIn, user } = useUser();
+
+  const form = useForm<Input>({
+    resolver: zodResolver(UserProfileSchema),
+  });
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      form.setValue("firstName", user.firstName ?? "");
+      form.setValue("lastName", user.lastName ?? "");
+      form.setValue("email", user.primaryEmailAddress?.emailAddress as string);
+      form.setValue(
+        "bio",
+        (user.unsafeMetadata as { bio?: string })?.bio ?? ""
+      );
+    }
+  }, [isLoaded, isSignedIn, user]);
 
   if (!isLoaded || !isSignedIn) {
     return null;
   }
-
-  const form = useForm<Input>({
-    resolver: zodResolver(UserProfileSchema),
-    defaultValues: {
-      // firstName: "" || props.user.username?.split(" ")[0],
-      // lastName: "" || props.user.username?.split(" ")[1],
-      // email: user.primaryEmailAddress?.emailAddress,
-      // bio: props.user.bio,
-      firstName: user.firstName || "",
-      lastName: user.lastName || "",
-      email: user.primaryEmailAddress?.emailAddress,
-      bio: user.unsafeMetadata?.bio || "",
-    },
-  });
-
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedImage = e.target.files?.[0];
 
@@ -64,11 +69,15 @@ export default function UserProfileForm(props: { user: User }) {
         firstName,
         lastName,
       });
+      toast({
+        title: "Profile Updated",
+        description: "Your profile has been successfully updated.",
+      });
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
   }
-
   return (
     <div className=" relative mx-auto mt-5 w-full max-w-[700px]">
       <Card>
